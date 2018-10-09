@@ -39,7 +39,8 @@ public class NettyServer {
 
 				@Override
 				protected void initChannel(NioSocketChannel ch) throws Exception {
-					// TODO Auto-generated method stub
+					// 指定连接数据读写逻辑   读写逻辑处理器
+					ch.pipeline().addLast(new FirstServerHandler());
 					
 				}
 			}).attr(AttributeKey.newInstance("serverName"), "nettyServer")//为服务端指定一个名称  可以通过channel.atrr() 取出

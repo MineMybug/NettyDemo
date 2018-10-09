@@ -37,7 +37,7 @@ public class NettyClient {
 				.handler(new ChannelInitializer<SocketChannel>() {
 					@Override
 					public void initChannel(SocketChannel ch) {
-						
+						ch.pipeline().addLast(new FirstClientHandler());//指定连接数据读写逻辑 这里负责向服务端写业务数据  用到了责任链模式
 					}
 				});
 
